@@ -1,0 +1,40 @@
+<!-- <body> -->
+{% extends "layout.html" %}
+{% block content %}
+    <div class="main">
+        <div class="subsection d-flex align-items-center justify-content-center flex-column">
+            <h1>Help Guide</h1>
+        </div>
+
+        <div class="parallax-window" data-parallax="scroll" data-z-index="1" data-image-src="../static/images/calculator.jpg"></div>
+
+        <div class="subsection d-flex justify-content-center mt-5 position-relative">
+            <h5 class="subheading position-absolute">Where do you find an overview of your cards?</h5>
+            <div class="row w-100">
+                <!-- Images to view functionalities of homepage -->
+                <img class="col-sm-4 images m-auto" src="../static/images/overviewTabHelp.png" alt="">
+                <img class="col-sm-4 images m-auto" src="../static/images/graphHelp.png" alt="">
+                <img class="col-sm-4 images m-auto" src="../static/images/overviewPanelHelp.png" alt="">
+            </div>
+        </div>
+
+        <div class="parallax-window" data-parallax="scroll" data-z-index="1" data-image-src="../static/images/coins.jpg"></div>
+
+        <div class="subsection mb-0">
+            <div class="subsection d-flex justify-content-center mt-5 position-relative">
+                <h5 class="subheading position-absolute">Where can I see my transactions and a breakdown of my spending?</h5>
+                <div class="row w-100">
+                    <!-- Images to view functionalities of card page -->
+                    <img class="col-sm-4 images m-auto" src="../static/images/accountsTabHelp1.png" alt="">
+                    <img class="col-sm-4 images m-auto" src="../static/images/donutHelp.png" alt="">
+                    <img class="col-sm-4 images m-auto" src="../static/images/transactionsHelp.png" alt="">
+                      <p class="pt-0 pb-0" style="width: 100%;">Contact email: grpt1spendingtracker@gmail.com</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- importing d3 -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+{% endblock content %}
+<!-- </body> -->

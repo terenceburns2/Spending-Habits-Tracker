@@ -1,0 +1,152 @@
+<!-- <body> -->
+{% extends "layout.html" %}
+{% block content %}
+
+    <script>
+        let logs_json = {{ logs_json | tojson }};
+    </script>
+
+
+        <!-- Title -->
+        <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+            <div class="container ml-3">
+                <h3 style="color:#033877;">Settings</h3>
+            </div>
+        </div>
+        <!-- End title-->
+
+        <div class="container">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group row">
+                    <label for="inputEmail" class="col col-form-label">
+                        {{ form.email.label(class="form-control-label") }}:
+                        {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.email(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPhone" class="col col-form-label">
+                        {{ form.phone.label(class="form-control-label") }}:
+                        {% if form.phone.errors %}
+                        {{ form.phone(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.phone.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.phone(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCurrentPass" class="col col-form-label">
+                        {{ form.password.label(class="form-control-label") }}:
+                        {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.password(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <label for="inputNewPass" class="col col-form-label">
+                        {{ form.confirm_password.label(class="form-control-label") }}:
+                        {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.confirm_password(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </label>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col col-form-label">{{ form.budget.label }}</label>
+                    <div class="col">
+                        <input name="budget" type="checkbox" checked data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="danger">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col col-form-label">{{ form.balance.label }}</label>
+                    <div class="col">
+                        <input name="balance" type="checkbox" checked data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="danger">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col col-form-label">{{ form.report.label }}</label>
+                    <div class="col">
+                        <input name="report" type="checkbox" checked data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="danger">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col col-form-label pr-0">Login History</label>
+                    <div class="col pl-0">
+                        <a class="nav-link"  data-toggle="modal" data-target="#audit">
+                            <button type="button" class="btn btn-success">View</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    {{form.save(class="btn btn-success btn-lg btn-block")}}
+                </div>
+            </form>
+        </div>
+
+        <div class="modal" id="audit">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h5 class="modal-title">Login History</h5>
+                    </div>
+                        <!-- Modal body -->
+                    <div class="modal-body">
+                            <table id="auditTable" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Email</th>
+                                            <th>IP Address</th>
+                                            <th>Region</th>
+                                            <th>Login Time</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="budgetModalClose">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal -->
+
+        <script src="../static/js/settings.js"></script>
+{% endblock content %}
+<!-- </body> -->

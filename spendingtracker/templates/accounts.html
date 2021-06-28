@@ -1,0 +1,153 @@
+<!-- <body> -->
+{% extends "layout.html" %}
+{% block content %}
+       
+<!--Receive transactions from db-->
+       <script>
+           var transaction_json = JSON.parse('{{ transactions|tojson }}');
+           var categories = JSON.parse('{{ categories|tojson }}');
+       </script>
+
+        <!-- Title -->
+        <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+            <div class="container ml-3">
+                <h3 style="color:#033877;">{{ card.card_name }}</h3>
+            </div>
+            <div class="ml-4 mr-4">
+                Account number - {{ card.account_number }} | Sort number - {{ card.sort_code }}
+                <span class="float-right">Balance - £{{card.balance}}</span>
+            </div>
+        </div>
+        <!-- End title -->
+
+        <!-- Main container, responsive -->
+        <div class="w-75 container mx-auto" style="padding-top: 30px;">
+            <div class="row">
+                <div class="col-lg-6 mb-4" style="text-align: center">
+                    <div id="piechart"></div>
+                    <!-- Button for generating random transactions -->
+                    <button type="submit" class="btn custom-btn btn-dark btn-md" onclick="generateTransaction({{ card.id }})">Generate Transaction</button>
+                </div>
+                <!-- Transaction table data filtering -->
+                <div class="col-lg-6 mb-4" >
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <label class="control-label" for="dateFrom">Date from: </label>
+                                <input type="date" id="dateFrom" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label class="control-label" for="dateTo">Date to:</label>
+                                <input type="date" id="dateTo" class="form-control">
+                            </div>
+                            <div class="col d-flex flex-column">
+                                <button type="button" class="mt-auto btn btn-success" onclick="datesSearch()" id="dateButton">Search</button>
+                            </div>
+                        </div>
+                        <div class="row" id="dateErrorRow">
+                            <div class="col">
+                                <span class="text-danger" style="display: none;" id="dateLengthErr">Please enter both dates to search transactions</span>
+                                <br>
+                                <span class="text-danger" style="display: none;" id="dateError">From date must be set before to date</span>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br>
+                    <!-- Transaction table -->
+                    <table class="table" id="transactionTable">
+                        <thead>
+                        <tr style="background-color: #033877; color: white;">
+                            <td scope="col">Transaction</td>
+                            <td scope="col">Date</td>
+                            <td scope="col">Amount</td>
+                            <td scope="col">
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #033877; color: white; border: none;">
+                                        Category
+                                    </button>
+                                    <!-- Category filtering -->
+                                    <form class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="padding: 15px;" >
+                                        <div id="categoryChecks">
+                                            {% for category in categories %}
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" value="{{ category }}" id="{{ category }}">
+                                                    <label class="form-check-label" for="testCheck">{{ category }}</label>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <button type="button" class="btn btn-primary" onclick="categoryFilter()" data-toggle="dropdown">Filter</button>
+                                    </form>
+                                </div>
+                            </td>
+                            <td scope="col"></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Transaction table change category -->
+                            {% for transaction in transactions_db %}
+                                <tr>
+                                    <td>{{ transaction.description }}</td>
+                                    <td>{{ transaction.timestamp.strftime('%Y-%m-%d') }}</td>
+                                    <td>£{{ transaction.amount }}</td>
+                                    <td>{{ transaction.category }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" type="button" id="changeButton" data-toggle="dropdown" style="border: none;">
+                                            </button>
+                                            <div class="dropdown-menu" id="changeDropdown" style="padding: 15px;" >
+                                                <form>
+                                                    <!-- View all available categories in the db to change transaction to -->
+                                                    {% for category in all_categories %}
+                                                        {% if transaction.category in category %}
+                                                            <div class="form-check">
+                                                                <input class="form-check-input {{ transaction.id }}" type="radio" name="radios" value="{{ category }}" checked>
+                                                                <label class="form-check-label" for="{{ category }}">
+                                                                    {{ category }}
+                                                                </label>
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="form-check">
+                                                                <input class="form-check-input {{ transaction.id }}" type="radio" name="radios" value="{{ category }}">
+                                                                <label class="form-check-label" for="{{ category }}">
+                                                                    {{ category }}
+                                                                </label>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    <button type="button" class="btn btn-primary" data-toggle="dropdown" id="{{ transaction.id }}" onclick="changeCategory(id)">Change</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th style="text-align: right;">Total:</th>
+                                <th id="tableTotal"></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+        <!-- Load moment.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.10.20/sorting/datetime-moment.js"></script>
+
+        <script src="../static/js/donut_d3.js"></script>
+        <script src="../static/js/accounts.js"></script>
+{% endblock content %}
+
+<!-- </body> -->

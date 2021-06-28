@@ -1,0 +1,79 @@
+Food;       Food
+Greggs;     Food
+Tesco;      Food
+Subway;     Food
+Asda;       Food
+Marks & Spencer;    Food
+Waitrose;   Food
+Morrisons;  Food
+Lidl;       Food
+Aldi;       Food
+Sainsburys; Food
+Starbucks;  Food
+Costa Coffee;       Food
+Nando's;    Food
+B&M;        Food
+Spar;       Food
+McDonalds;  Food
+KFC;        Food
+Burger King;    Food
+Dominoes;   Food
+
+Shopping;   Shopping
+Argos;      Shopping
+
+Cineworld; Entertainment
+Nottingham Bowl; Entertainment
+Virgin Active; Entertainment
+
+
+Clothes;    Clothes
+ZARA;       Clothes
+Primark;    Clothes
+H&M;        Clothes
+Uniqlo;     Clothes
+Topshop;    Clothes
+
+
+Wilko;      Home Supplies
+John Lewis; Home Supplies
+Ikea;       Home Supplies
+
+Technology; Technology
+Currys;     Technology
+
+Medicine;   Medicine
+Boots;      Medicine
+Holland & Barrett;  Medicine
+
+Stationary; Stationary
+Ryman;      Stationary
+Staples;    Stationary
+WHSmith;    Stationary
+
+Electricity; Bills
+Heating; Bills
+Water; Bills
+Maintenance; Bills
+
+Card Factory;   Cards
+
+
+Halfords;   Autoparts
+
+
+Debenhams;  Department Store
+
+
+Charity;    Charity
+British Heart Foundation;   Charity
+
+
+Toy;        Toys
+Toys;       Toys
+Smyths;     Toys
+
+
+Gifts;      Gifts
+Gift;       Gifts
+Men Kind;   Gifts

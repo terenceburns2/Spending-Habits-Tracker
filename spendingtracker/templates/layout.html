@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <!-- Libraries: -->
+
+    <!-- importing boostrap and jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- importing parallax -->
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+    <script src="../static/js/parallax.min.js"></script>
+
+    <!-- Load datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/f08d264363.js" crossorigin="anonymous"></script>
+    {% if title %}
+        <title>Spending Tracker | {{ title }}</title>
+    {% else %}
+        <title>Spending Tracker</title>
+    {% endif %}
+</head>
+{%if title == 'Register' or title == 'Login' %}
+<body style="background-color: #033877">
+{% else %}
+<body>
+{% endif %}
+
+
+<!--NavBar-->
+    <nav class="navbar navbar-expand-xl navbar-dark navColour">
+        <a class="navbar-brand" href="{{ url_for('main.homepage') }}"><img src="../static/images/capital-one.png" class="img-fluid" id="logo" alt="Capital One homepage"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarLinks">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link {{'active' if title == 'Homepage'}}" href="{{ url_for('main.homepage') }}">Overview<span class="sr-only">(current)</span></a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{'active' if title == 'Cards'}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cards
+                    </a>
+                    {% if current_user.is_authenticated %}
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% if current_user.cards == [] %}
+                              <a class="dropdown-item">
+                                  No card
+                              </a>
+                            {% endif %}
+                            {% for card in current_user.cards %}
+                              <a class="dropdown-item" href="{{ url_for('cards.card', card_id=card.id) }}">
+                                  {% if card.card_name == None %}
+                                    Card {{ loop.index }}
+                                  {% else %}
+                                    {{ card.card_name }}
+                                  {% endif %}
+                              </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{'active' if title == 'Add Card'}}" href="{{ url_for('cards.add_card') }}">Add Card</a>
+                </li>
+                {% else %}
+                <!-- Print nothing: The user is not logged in -->
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link {{'active' if title == 'Help'}}" href="{{ url_for('main.support') }}">Help Guide</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link {{'active' if title == 'Inbox'}}" href="{{ url_for('main.inbox') }}">Notifications</a>
+                </li>
+                {% else %}
+                <!-- Print nothing: The user is not logged in -->
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    {% if current_user.is_authenticated %}
+
+                    {% else %}
+                        <a class="nav-link {{'active' if title == 'Login'}}" href="{{ url_for('users.login') }}">Login</a>
+                    {% endif %}
+
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    {% if current_user.is_authenticated %}
+                        <li><a class="nav-link {{'active' if title == 'Settings'}}" href="{{ url_for('users.settings') }}">Settings</a></li>
+                        <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
+                    {% else %}
+                        <a class="nav-link {{'active' if title == 'Register'}}" href="{{ url_for('users.register') }}">Register</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+<!--NavBar-->
+
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} m-0">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<!-- Flash Messages -->
+
+
+{% block content %}
+<!-- Code block that will be replaced by other html files -->
+{% endblock %}
+
+<script src="../static/js/budget.js"></script>
+
+</body>
+</html>

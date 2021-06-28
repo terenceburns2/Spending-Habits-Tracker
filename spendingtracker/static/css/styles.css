@@ -1,0 +1,265 @@
+/* || GENERAL STYLING */
+
+html, body {
+    height: 100%;
+}
+
+p {
+    text-align: center;
+    padding: 50px 50px;
+}
+
+h1 {
+    font-size:300%;
+}
+
+/* || NAVBAR */
+
+.error {
+    border-color:#dc3545;
+}
+
+#logo {
+    width: 150px;
+}
+
+.navColour {
+    background-color: #033877;
+}
+
+/* || CAROUSEL */
+
+.carousel {
+    top: 10%;
+}
+
+.carousel-inner {
+    overflow: unset;
+}
+
+@media all and (max-width: 600px) {
+    .carousel {
+        top: 1%;
+    }
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    filter: invert(1);
+}
+
+.carousel-control-prev, .carousel-control-next {
+    top: -55px;
+    margin: auto 0;
+    height: 20%;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    filter: invert(1);
+}
+
+/* || MAIN CONTENT */
+.titleCard {
+    font-size: 1rem;
+    color: #007bff;
+    font-weight: 400;
+}
+
+
+.nameCard {/* Name card within Homepage */
+    background-color: white;
+    height: 80px;
+    width: 300px;
+    position: relative;
+    margin: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+}
+
+.nameCard:after {
+    content: '';
+    width: 80%;
+    height: 50px;
+    box-shadow: 0 2px 80px rgba(0,0,0,0.2);
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    z-index: -1;
+}
+
+.homeContentBoxes {
+    background-color: white;
+    height: 300px;
+}
+
+.homeContentBoxes:after {
+    content: '';
+    width: 80%;
+    height: 100px;
+    box-shadow: 0 2px 80px rgba(0,0,0,0.2);
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    z-index: -1;
+}
+
+.custom-btn {
+    background-color: #033877;
+}
+
+#card-body-styling {
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+#homeCardName {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.shadow { /* Shadow for 'get started' card */
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+/* || LOGIN */
+
+.subTitle {
+    color: white;
+    position: relative;
+    bottom: 45px;
+    font-size: 2em;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.loginBody {
+    height: 100%;
+    overflow: hidden;
+    background-color: #033877;
+}
+
+.myJumbotron {
+    background-color: initial;
+}
+
+.loginTitle {
+    color: white;
+
+}
+
+/* || ACCOUNT CARD */
+
+.btn-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.btn-link:focus {
+    text-decoration: none;
+}
+
+.divider-vertical {
+    height: 50px;
+    margin: 0 9px;
+    border-left: 1px solid rgba(255,255,255,.5);
+}
+
+@media (max-width: 100px) {
+    .navbar-collapse .nav > .divider-vertical {
+        display: none;
+    }
+}
+
+/* || ACCOUNTS PAGE DONUT CHART */
+
+.donutHoverBox {
+    position: absolute;
+    text-align: center;
+    padding: .5rem;
+    background: #FFFFFF;
+    color: #313639;
+    border: 1px solid #313639;
+    border-radius: 8px;
+    pointer-events: none;
+    font-size: 1.3rem;
+}
+
+/* || PARALLAX SUPPORT PAGE */
+
+.subheading {
+    color: gainsboro;
+}
+
+.main {
+    background-color: #033877;
+}
+
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
+
+.subsection {
+    height: 500px;
+    background-color: #033877;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+    .subsection {
+        height: 1000px;
+    }
+}
+
+.images {
+    height: 350px;
+}
+
+/* || ADD CARD PAGE */
+
+.outCreditCardIconContainer {
+    display: flex;
+    justify-content: center;
+}
+.innerCreditCardIconContainer {
+    background-color: #033877;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+#creditCardIcon {
+    color: white;
+}
+
+/* || REPORT PAGE */
+
+#reportHeader {
+    width: 100%;
+    height: 100px;
+    background-color: #033877;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+#reportEmailLogo {
+    float: left;
+    width: 150px;
+    height: 51px;
+    align-self: center;
+    padding: 50px;
+}
+
+#reportTitle {
+    align-self: center;
+    color: white;
+    padding: 50px;
+}

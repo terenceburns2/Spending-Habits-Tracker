@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <!-- Add card page -->
+    <!-- Title -->
+    <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+        <div class="container ml-3">
+            <h3 style="color:#033877;">Add Card</h3>
+        </div>
+    </div>
+    <!-- End Title -->
+
+   <div class="container">
+   <form method="POST" action="">
+            <!-- this tag is just for protection, related to token -->
+            {{ form.hidden_tag() }}
+
+            <fieldset class="form-group">
+
+                <div class="outCreditCardIconContainer">
+                    <div class="innerCreditCardIconContainer">
+                        <i class="fas fa-credit-card fa-7x" id="creditCardIcon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.card_name.label(class="form-control-label") }}
+
+                    {% if form.card_name.errors %}
+                        {{ form.card_name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.card_name.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.card_name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <div class="form-group">
+                    {{ form.sort_code.label(class="form-control-label") }}
+
+                    {% if form.sort_code.errors %}
+                        {{ form.sort_code(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.sort_code.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.sort_code(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.account_number.label(class="form-control-label") }}
+                    {% if form.account_number.errors %}
+                        {{ form.account_number(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.account_number.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.account_number(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+            </fieldset>
+            <div class="form-group">
+                {{form.submit(class="btn btn-success btn-lg btn-block")}}
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}
+
+#007bff
+1rem

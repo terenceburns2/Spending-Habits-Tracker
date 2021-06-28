@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <div class="container" style="padding-top: 10%">
+        <div class="jumbotron myJumbotron">
+        <h1 class="text-center loginTitle">Welcome to the Finance Tracker</h1>
+            <div class="row d-flex justify-content-center">
+                <div class="col-8 ">
+                    <form method="POST">
+                        <!-- this tag is just for protection, related to token -->
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ form.email.label(class="form-control-label text-light") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>
+                                    {{ error }}
+                                    </span>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.password.label(class="form-control-label text-light") }}
+                            {% if form.password.errors %}
+                                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    <span>
+                                    {{ error }}
+                                    </span>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-check">
+                            {{ form.remember(class="form-check-input") }}
+                            {{ form.remember.label(class="form-check-label text-light") }}
+                        </div>
+                        <div class="text-center">
+                            {{form.submit(class="btn btn-success")}}
+                            <div>
+                                <small class="text-muted">
+                                <a href="{{ url_for('users.reset_password') }}">Forgot Password?</a>
+                                </small>
+                            </div>
+                            <div class="row">
+                                <div class="col"><hr></div>
+                                <div class="col-auto text-light">Or</div>
+                                <div class="col"><hr></div>
+                            </div>
+                            <a type="button" class="btn btn-primary" href="{{url_for('users.register')}}">Register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-copyright text-center py-3" style="color: white">
+            © 2020 Copyright:
+            <a href ="https://www.capitalone.co.uk/"> Capital One</a>
+        </div>
+    </div>
+
+{% endblock content %}

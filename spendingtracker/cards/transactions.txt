@@ -1,0 +1,59 @@
+Aldi, London, England
+Asda, London, England
+Burger King, London, England
+B&M, London, England
+Costa Coffee, London, England
+Dominoes, London, England
+Greggs, London, England
+KFC, London, England
+Lidl, Nottingham, England
+Marks & Spencer, London, England
+McDonalds, London, England
+Morrisons, London, England
+Nando's, London, England
+Sainsburys, London, England
+Spar, London, England
+Starbucks, London, England
+Subway, Nottingham, England
+Tesco Metro, Nottingham, England
+Waitrose, London, England
+Argos, London, England
+H&M, London, England
+Primark, London, England
+Topshop, London, England
+Uniqlo, London, England
+ZARA, London, England
+
+Cineworld, Nottingham, England
+Nottingham Bowl, Nottingham, England
+Virgin Active, Nottingham, England
+
+Ikea, London, England
+John Lewis, Nottingham, England
+Wilko, Nottingham, England
+
+Currys, Nottingham, England
+
+Boots, Nottingham, England
+Holland & Barrett, Nottingham, England
+
+Ryman, Nottingham, England
+Staples, Nottingham, England
+WHSmith, Nottingham, England
+
+Electricity, Nottingham, England
+Heating, Nottingham, England
+Water, Nottingham, England
+Maintenance, Nottingham, England
+
+Halfords, Nottingham, England
+
+Debenhams, Nottingham, England
+
+British Heart Foundation, Nottingham, England
+
+Smyths, Nottingham, England
+Toys, Nottingham, England
+
+Gift, Nottingham, England
+Men Kind, Nottingham, England
