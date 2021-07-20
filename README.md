@@ -16,7 +16,9 @@ The project was primarily built in Python using a framework called Flask. All te
 To integrate the backend with the view components, the template engine Jinja was heavily relied upon. 
 
 <p align="center">
-  <img src="" width="230" />
+  <img src="./demo1.png" width="400" />
+  <img src="./demo3.png" width="400" />
+  <img src="./demo2.png" width="400" />
 </p>
  
 
