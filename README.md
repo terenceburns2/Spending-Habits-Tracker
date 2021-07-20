@@ -10,7 +10,7 @@ Part of my group project at University. The project was outlined by a Capital On
 
 ## Functionality 🔋
 
-All requirements above were successfully implemented.
+All requirements above were successfully completed.
 
 The project was primarily built in Python using a framework called Flask. All templates/UI were created using standard HTML and CSS (Bootstrap). 
 To integrate the backend with the view components, the template engine Jinja was heavily relied upon. 
